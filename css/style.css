@@ -1,0 +1,132 @@
+body {
+  margin: 0;
+  font-family: Roboto, Arial, sans-serif;
+}
+
+/* mapa na tela toda */
+#mapa {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+/* efeito de vidro */
+.vidro {
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* busca e painel por cima do mapa */
+#topo,
+#painel {
+  position: fixed;
+  left: 12px;
+  width: 400px;
+  z-index: 1001;
+}
+
+#topo {
+  top: 12px;
+  padding: 10px;
+}
+
+.caixa-busca {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 28px;
+  padding: 4px 4px 4px 12px;
+}
+
+.caixa-busca .form-control {
+  background: transparent;
+}
+
+#chips {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.chip {
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  padding: 4px 14px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.chip.ativo {
+  background: #e8f0fe;
+  border-color: #1a73e8;
+  color: #1a73e8;
+}
+
+#favoritos {
+  display: flex;
+  gap: 8px;
+}
+
+#painel {
+  top: 130px;
+  max-height: calc(100vh - 145px);
+  overflow-y: auto;
+}
+
+/* tira o fundo branco do bootstrap */
+#painel .list-group-item {
+  background: transparent;
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+#painel .list-group-item-action:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.letreiro {
+  font-family: monospace;
+  font-size: 0.95rem;
+  background: #1a73e8;
+}
+
+.tempo {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #188038;
+}
+
+.credito {
+  font-size: 0.75rem;
+  color: #3c4043;
+  text-align: center;
+  margin: 8px;
+}
+
+/* celular */
+@media (max-width: 767px) {
+  #topo {
+    right: 12px;
+    width: auto;
+  }
+
+  #painel {
+    top: auto;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    max-height: 50vh;
+    border-radius: 20px 20px 0 0;
+  }
+
+  .leaflet-control-zoom {
+    display: none;
+  }
+}
