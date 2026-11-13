@@ -17,7 +17,7 @@ App web que usa a API Olho Vivo da SPTrans para ajudar quem anda de ônibus em S
 **Linhas**
 - Busca uma linha pelo número ou nome
 - Mostra no mapa onde estão os ônibus daquela linha agora
-- Mostra o trajeto da linha no mapa e a lista de pontos por onde ela passa
+- Mostra no mapa e numa lista os pontos por onde a linha passa
 - Atualiza sozinho a cada 30 segundos
 
 ## Arquivos

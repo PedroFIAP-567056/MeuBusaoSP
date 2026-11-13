@@ -48,7 +48,7 @@ async function abrirLinha(i) {
   document.getElementById('paradas-linha').innerHTML = '';
   mostrar('detalhe-linha');
 
-  // pontos por onde a linha passa, em ordem
+  // pontos por onde a linha passa
   paradasDaLinha = await buscarNaApi('Parada/BuscarParadasPorLinha', { codigoLinha: linhaAtual });
   if (paradasDaLinha.erro) paradasDaLinha = [];
 
@@ -73,7 +73,7 @@ async function carregarOnibus(primeiraVez) {
   }
 
   marcadores.clearLayers();
-  desenharTrajeto();
+  marcarParadas();
 
   for (const onibus of dados.vs) {
     marcarOnibus(onibus, 'Ônibus ' + onibus.p + (onibus.a ? '<br>Acessível' : ''));
@@ -90,11 +90,8 @@ async function carregarOnibus(primeiraVez) {
   }
 }
 
-// liga os pontos da linha com uma linha azul (é em linha reta de um ponto pro outro)
-function desenharTrajeto() {
-  const caminho = paradasDaLinha.map(p => [p.py, p.px]);
-  L.polyline(caminho, { color: '#1a73e8', weight: 5, opacity: 0.7 }).addTo(marcadores);
-
+// a API não manda os pontos na ordem do trajeto, então só marco cada um no mapa
+function marcarParadas() {
   for (const parada of paradasDaLinha) {
     L.circleMarker([parada.py, parada.px], {
       radius: 4,
